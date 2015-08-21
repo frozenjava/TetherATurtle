@@ -8,7 +8,7 @@
 #
 # I hope this makes development for turtle modules less of a pain... who wants to be tethered to a cable anymore?
 # - Newbi3
-#
+# Extra edits made by foxtrot <foxtrotnull(@)gmail.com>
 # Credit goes to whoever wrote the wp5.sh script for the wifi pineapple.
 #
 
