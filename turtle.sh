@@ -16,7 +16,7 @@
 
 echo "$(tput setaf 2)"
 echo "               LAN TURTLE"
-echo "                by Hak5"
+echo "               by Hak5"
 echo "        .-./*)            (*\.-."
 echo "      _/___\/              \/___\_"
 echo "        U U                  U U"
@@ -65,20 +65,10 @@ if [[ $turtleip == '' ]]; then
 turtleip=172.16.84.1 #Thanks Douglas Adams
 fi
 
-#Display settings
-#echo Turtle connected to: $turtlelan
-#echo Internet connection from: $turtlewan
-#echo Internet connection gateway: $turtlegw
-#echo Host Computer IP: $turtlehostip
-#echo Turtle IP: $turtleip
-#echo Network: $turtlenet
-#echo Netmask: $turtlenetmask
-
 echo ""
-echo "$(tput setaf 6)     _ .   $(tput sgr0)        $(tput setaf 7)___$(tput sgr0)          $(tput setaf 3)\||/$(tput sgr0)   Internet: $turtlegw - $turtlewan"
-echo "$(tput setaf 6)   (  _ )_ $(tput sgr0) $(tput setaf 2)<-->$(tput sgr0)  $(tput setaf 7)[___]$(tput sgr0)  $(tput setaf 2)<-->$(tput sgr0)  $(tput setaf 3),<><>,$(tput sgr0)  Computer: $turtlehostip"
-echo "$(tput setaf 6) (_  _(_ ,)$(tput sgr0)       $(tput setaf 7)\___\\$(tput sgr0)        $(tput setaf 3)'<><>'$(tput sgr0) Turtle: $turtlenet - $turtlelan"
-
+echo "$(tput setaf 6)     _ .   $(tput sgr0)        $(tput setaf 7)___$(tput sgr0)          $(tput setaf 2)  .-./*) $(tput sgr0)   Internet: $turtlegw  - $turtlewan"
+echo "$(tput setaf 6)   (  _ )_ $(tput sgr0) $(tput setaf 5)<-->$(tput sgr0)  $(tput setaf 7)[___]$(tput sgr0)  $(tput setaf 5)<-->$(tput sgr0)  $(tput setaf 2) _/___\/  $(tput sgr0)   Computer: $turtlehostip"
+echo "$(tput setaf 6) (_  _(_ ,)$(tput sgr0)       $(tput setaf 7)\___\\$(tput sgr0)        $(tput setaf 2)   U U $(tput sgr0)      Turtle: $turtlenet - $turtlelan"
 
 #Bring up Ethernet Interface directly connected to Turtle
 ifconfig $turtlelan $turtlehostip netmask $turtlenetmask up
@@ -107,18 +97,18 @@ route del default
 route add default gw $turtlegw $turtlewan
 #echo Turtle Default Gateway Configured
 
-#instructions
-#echo All set. Now on the Turtle issue: route add default gw $turtlehostip br-lan
-
+##send the command to add 8.8.8.8 to lanturtles /etc/resolv.conf
 #ping -c1 $turtleip
 #if [ $? -eq 0 ]; then
 #echo "ICS configuration successful."
-#echo "Issuing on Turtle: route add default gw $turtlehostip br-lan"
-#echo "  ssh root@$turtleip 'route add default gw '$turtlehostip' br-lan'"
-#echo "Enter Turtle password if prompted"
-#ssh root@$turtleip 'route add default gw '$turtlehostip' br-lan'
+#echo "Issuing on Turtle: 'echo 8.8.8.8 >> /etc/resolv.conf'"
+#echo "Enter password if prompted"
+#ssh root@$turtleip 'echo 8.8.8.8 >> /etc/resolv.conf'
 #fi
 
+#instruction
+echo " "
+echo "Now on the Turtle execute: \"echo 8.8.8.8 >> /etc/resolv.conf\""
 echo ""
 echo "Happy Shelling :)"
 echo ""
