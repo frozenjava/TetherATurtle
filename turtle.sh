@@ -1,7 +1,5 @@
 #!/bin/bash
-#define variables
 
-#
 # This is just a modifed version of wp5.sh for the pineapple with the turtle network address and bannder
 # You will need to manully cofigure the default gw on your turtle to 172.16.84.42
 # To do that run this command on your turtle: route add default gw 172.16.84.42
@@ -16,7 +14,7 @@
 
 echo "$(tput setaf 2)"
 echo "               LAN TURTLE"
-echo "               by Hak5"
+echo "                by Hak5"
 echo "        .-./*)            (*\.-."
 echo "      _/___\/              \/___\_"
 echo "        U U                  U U"
@@ -97,20 +95,17 @@ route del default
 route add default gw $turtlegw $turtlewan
 #echo Turtle Default Gateway Configured
 
-##send the command to add 8.8.8.8 to lanturtles /etc/resolv.conf
-#ping -c1 $turtleip
-#if [ $? -eq 0 ]; then
-#echo "ICS configuration successful."
-#echo "Issuing on Turtle: 'echo 8.8.8.8 >> /etc/resolv.conf'"
-#echo "Enter password if prompted"
-#ssh root@$turtleip 'echo 8.8.8.8 >> /etc/resolv.conf'
-#fi
+#automatically try to configure LAN Turtle
+ping -i 1 -c1 $turtleip
+if [ $? -eq 0 ]; then
+echo "ICS configuration successful."
+echo "Configuring LAN Turtle."
+echo "Enter password if prompted"
+ssh root@$turtleip "echo \"nameserver 8.8.8.8\" >> /etc/resolv.conf && route add default gw 172.16.84.42"
+else
+echo "Could not connect to the LAN Turtle!"
+fi
 
-#instruction
-echo " "
-echo "Now on the Turtle execute:"
-echo " \"echo 8.8.8.8 >> /etc/resolv.conf\""
-echo " \"bash route add default gw 172.16.84.42\""
 echo ""
 echo "Happy Shelling :)"
 echo ""
