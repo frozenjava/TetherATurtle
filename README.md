@@ -7,3 +7,6 @@ After you configure your turtle go ahead and run the script. Its the same procce
 ## Why?
 Because who wants to develop modules while sitting next to your router unable to leave because you have a cable coming out of your machine.
 
+### Contributers
+Special thanks to whoever it is that wrote the wp5.sh script for the wifi pineapple and Foxtrot for the automatic turtle configuration portion of the script.
+
