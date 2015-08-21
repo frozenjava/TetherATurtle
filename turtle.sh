@@ -34,10 +34,10 @@ if [[ $turtlenet == '' ]]; then
 turtlenet=172.16.84.0/24 # Turtle network. Default is 172.16.84.0/24
 fi
 
-echo -n "Interface between PC and Turtle [eth0]: "
+echo -n "Interface between PC and Turtle [eth1]: "
 read turtlelan
 if [[ $turtlelan == '' ]]; then 
-turtlelan=eth0 # Interface of ethernet cable directly connected to Turtle
+turtlelan=eth1 # Interface of ethernet cable directly connected to Turtle
 fi
 
 echo -n "Interface between PC and Internet [wlan0]: "
@@ -108,7 +108,9 @@ route add default gw $turtlegw $turtlewan
 
 #instruction
 echo " "
-echo "Now on the Turtle execute: \"echo 8.8.8.8 >> /etc/resolv.conf\""
+echo "Now on the Turtle execute:"
+echo " \"echo 8.8.8.8 >> /etc/resolv.conf\""
+echo " \"bash route add default gw 172.16.84.42\""
 echo ""
 echo "Happy Shelling :)"
 echo ""
