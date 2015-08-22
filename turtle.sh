@@ -103,6 +103,10 @@ route del default
 route add default gw $turtlegw $turtlewan
 #echo Turtle Default Gateway Configured
 
+# Change dns server to prefered DNS server
+#sed -i 's/$turtleip/$turtledns/g' /etc/resolv.conf
+sed -i s/$turtleip/$turtledns/g /etc/resolv.conf
+
 #automatically try to configure LAN Turtle
 #special thanks to Foxtrot for this part
 ping -i 1 -c1 $turtleip
@@ -114,6 +118,11 @@ ssh root@$turtleip "echo \"nameserver $turtledns\" >> /etc/resolv.conf && route 
 else
 echo "Could not connect to the LAN Turtle!"
 fi
+
+#fix routing on host machine
+#the turtle likes to become your default gateway and thats annoying in this case so we just set it back and fix the dns settings
+#route del default gw lan.turtle
+#route add default gw $turtlegw
 
 echo ""
 echo "Happy Shelling :)"
